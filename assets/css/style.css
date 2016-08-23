@@ -1,0 +1,116 @@
+body{
+	background-color: #21303b;
+}
+
+.mainContentContainer{
+	width: 1500px;
+	height: 750px;
+	margin: auto;
+	margin-top: 100px;
+	outline: 2px dashed #98abb9;
+	outline-offset: -7.5px;
+	background-color: #556068;
+	-webkit-box-shadow: 3px 7px 5px #000, -3px 7px 5px #000, 3px -7px 5px #000, -3px -7px 5px #000;
+	-moz-box-shadow: 3px 7px 5px #000, -3px 7px 5px #000, 3px -7px 5px #000, -3px -7px 5px #000;
+	box-shadow: 3px 7px 5px #000, -3px 7px 5px #000, 3px -7px 5px #000, -3px -7px 5px #000;
+	margin: 100px auto;		
+	position: relative;
+	z-index: 0;
+}
+
+.startScreenContentBox{
+	width: 1465px;
+	height: 715px;
+	border-radius: 30px;
+	background-color: #556068;
+	margin: auto;
+	margin-top: 50px;
+	position: relative;
+	top: 17px;
+	z-index: 1;
+}
+
+#headerText{
+	font-size: 3em;
+	font-family: Helvetica, sans-serif;
+	font-weight: bold;
+	color: white;
+	-webkit-text-shadow: 2px 2px 7px black, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px white, 3px 7px 5px black;
+	-moz-text-shadow: 2px 2px 7px black, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px white, 3px 7px 5px black;
+	text-shadow: 2px 2px 7px black, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px white, 3px 7px 5px black;
+	text-align: center;
+	margin:auto;
+	position: relative;
+	top: 10px;
+}
+
+.timer, .question, .choiceOne, .choiceTwo, .choiceThree, .choiceFour{
+	font-size: 1.5em;
+	font-family: Helvetica, sans-serif;
+	color: white;
+	text-shadow: 2px 2px 7px black, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px white;
+	text-align: center;
+}
+
+.timer{
+	margin-top: 30px;
+}
+
+.question{
+	margin-top: 20px;
+}
+
+.imageBoxContainer, .imageSize{
+	width: 450px;
+	height: 227px;
+	margin-top: 15px;
+}
+
+.imageSize{
+    box-shadow: 0px 4px 10px black, 4px 0px 10px black, 0px -4px 10px black, -4px 0px 10px black;
+}
+
+.imageBoxContainer{
+    display: block;
+    margin: auto;
+}
+
+.fourAnswerChoices{
+	margin: auto;
+	margin-top: 60px;
+	width: 1200px;
+	height: 250px;
+}
+
+.choiceOne, .choiceTwo, .choiceThree, .choiceFour{
+	width: 587.5px;
+	height: 100px;
+	line-height: 4;
+	text-align: center;
+	font-weight: bold;
+	/*background-color: white;	*/
+}
+
+.choiceThree{
+	clear: left;
+}
+.choiceOne, .choiceThree{
+	float: left;
+}
+
+.choiceTwo, .choiceFour{
+	float: right;
+	/*clear: right;*/
+}
+
+.choiceThree, .choiceFour{
+	margin-top: 25px;
+}
+.choiceOne:hover, .choiceTwo:hover, .choiceThree:hover, .choiceFour:hover{
+	background: white;
+}
+
+.inset{
+    background-color: rgba(255, 255, 255, .2);
+    box-shadow: 0px 4px 10px black, 4px 0px 10px black, 0px -4px 10px black, -4px 0px 10px black;
+}
