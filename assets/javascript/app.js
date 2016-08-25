@@ -108,7 +108,8 @@ $(document).ready(function(){
 	// introSong.loop = true;
 
 	$("button.startButton").click(function(){
-		$(".startButtonHeader, .startText, .startButton").detach();
+		$(".startButton").detach();
+		$(".startButtonHeader, .startText").html("");
 		$(".invisible").removeClass("invisible");
 		$("#headerText").html('Can you guess these Game of Thrones character names on sight?');
 		
@@ -133,6 +134,9 @@ $(document).ready(function(){
 		function resetTimer(){
 			gameTimer = 5;
 			$(".timer").html("Time Remaining " + gameTimer + " Seconds");
+            if (gameTimer == "0"){
+                stop();
+            }	
 		}
 
 		timer();
@@ -163,11 +167,54 @@ $(document).ready(function(){
 			$(".choiceThree").empty()
 			$(".choiceFour").empty()
 		}
-	
+
+		function fiveSeconds() {
+		    alert('Times up!');
+		}
+
+		setTimeout(fiveSeconds, 1000 * 5);
+
 		$(".answerChoices").click(function(){
+
+			if (answerChoices[i + 1] == undefined){
+				// alert("Nothing left");
+				$(".answerChoices").addClass("invisible");
+				stop();
+				// $(".startButtonHeader, .startText").html("");
+				$(".startButtonHeader").html("Game of Thrones Trivia Game!");
+				$(".startText").html("<p class='scoreMargins'>Correct Answers: " + correctGuesses + "</p>" + "<p class='scoreMargins'>Incorrect Answers: " + incorrectGuesses + "</p>" + "<p class='scoreMargins'>Unanswers: " + noGuesses + "</p>" + "<p>Click the reset button to start again.</p>");
+				$(".timer").html("");
+				$("#headerText").html("")
+				$(".startButtonContainer").append('<button class="resetButton inset">Reset</button>')
+
+				$(".resetButton").click(function(){
+					$(".invisible").removeClass("invisible");
+					$("#headerText").html('Can you guess these Game of Thrones character names on sight?');
+					$(".startText").html("");
+					$(".startButtonHeader").html("");
+					$(".resetButton").detach();
+
+					correctGuesses = 0;
+					incorrectGuesses = 0;
+					noGuesses = 0;
+
+					i = 0;
+				    emptyCurrentQuestions();
+				    newQuestionContainer();
+					resetTimer();
+
+				});
+			
+			}
+			
+			// if (setTimeout(fiveSeconds, 1000 * 5) == 0) {
+			// 	alert("Times Up!");
+			// }
+
 
 			if (answerChoices[i] !== undefined){
 				if($(this).attr("isItCorrect") == "true"){
+					setTimeout(fiveSeconds, 1000 * 5);
 					console.log($(this).attr("isItCorrect"));
 					alert("Yes");
 					i++
@@ -185,11 +232,9 @@ $(document).ready(function(){
 					resetTimer();
 				}
 				// gameTimer = 5;
-				timer();
-	
-			}else
-				alert("Nothing left");
-				stop();
+				// timer();
+
+			}
 		});
 	});		
 });

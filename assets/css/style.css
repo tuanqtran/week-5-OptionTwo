@@ -47,7 +47,7 @@ body{
 	top: 17px;
 }
 
-#headerText, .startButtonHeader{
+#headerText, .startButtonHeader, .resetButtonHeader{
 	font-size: 3em;
 	font-family: Helvetica, sans-serif;
 	font-weight: bold;
@@ -61,16 +61,16 @@ body{
 	top: 10px;
 }
 
-.startButtonHeader{
+.startButtonHeader, .resetButtonHeader{
 	position: relative;
 	top: 175px;
 }
 
-.startText{
+.startText, .resetText{
 	position: relative;
 	top: 225px;
 }
-.startButton{
+.startButton, .resetButton{
 	width: 587.5px;
 	height: 75px;
     margin: auto;
@@ -81,7 +81,7 @@ body{
 	top: 275px;
 }
 
-.timer, .question, .choiceOne, .choiceTwo, .choiceThree, .choiceFour, .startText, .startButton{
+.timer, .question, .choiceOne, .choiceTwo, .choiceThree, .choiceFour, .startText, .startButton, .resetText, .resetButton{
 	font-size: 1.5em;
 	font-family: Helvetica, sans-serif;
 	color: white;
@@ -149,7 +149,7 @@ body{
 .choiceThree, .choiceFour{
 	margin-top: 25px;
 }
-.choiceOne:hover, .choiceTwo:hover, .choiceThree:hover, .choiceFour:hover, .startButton:hover{
+.choiceOne:hover, .choiceTwo:hover, .choiceThree:hover, .choiceFour:hover, .startButton:hover, .resetButton:hover{
 	background: white;
 }
 
@@ -159,4 +159,8 @@ body{
 	-webkit-box-shadow: 0px 4px 10px black, 4px 0px 10px black, 0px -4px 10px black, -4px 0px 10px black;
 	-moz-box-shadow: 0px 4px 10px black, 4px 0px 10px black, 0px -4px 10px black, -4px 0px 10px black;
     box-shadow: 0px 4px 10px black, 4px 0px 10px black, 0px -4px 10px black, -4px 0px 10px black;
+}
+
+.scoreMargins{
+	margin-bottom: 25px;
 }
