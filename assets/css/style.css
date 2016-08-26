@@ -1,8 +1,30 @@
+/*
+================================================
+================================================
+
+       Start of the Game of Thrones CSS.
+
+================================================
+================================================
+
+***    ***    ***              ***    ***    ***
+
+================================================
+	 Local font installed and named using
+	              @font-face.
+================================================
+*/
 @font-face{
 	font-family: gameOfThrones;
 	src: url("../font/gameOfThrones.ttf"); 
 }
 
+/*
+================================================
+     Provide a game of throne font, with a
+   shadow background and enlarge hover scale.
+================================================
+*/
 .gameOfThroneHeader{
 	font-family: gameOfThrones;
 	font-size: 5em;
@@ -11,32 +33,65 @@
 	-webkit-text-shadow: 2px 2px 7px orange, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px black, 3px 7px 5px black;
 	-moz-text-shadow: 2px 2px 7px orange, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px black, 3px 7px 5px black;
 	text-shadow: 2px 2px 7px orange, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px black, 3px 7px 5px black;
+	-moz-transition: all 1.5s ease;
+	-webkit-transition: all 1.5s ease;
+	transition: all 1.5s ease;
 	text-align: center;
-	line-height: 1.2;
 	margin-top: 50px;
+	line-height: 1.2;
 }
 
+.gameOfThroneHeader:hover{
+	-moz-transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+  	transform: scale(1.2);
+}
+
+/*
+================================================
+       Provide a gradient grey/white/grey
+                body background.
+================================================
+*/
 body{
     background: linear-gradient(#21303b, white, #21303b);
 }
 
+/*
+================================================
+    Any class with this will be hidden from
+        the page. Note: Spacing is kept.
+================================================
+*/
 .invisible{
 	visibility: hidden;
 }
 
+/*
+================================================
+    Main container with a set width/height
+  and outlined dashed to provide a stitching
+ effect. Shadow is embedded all around the box.
+================================================
+*/
 .mainContentContainer{
 	width: 1500px;
 	height: 750px;
-	margin: auto;
-	/*margin-top: 100px;*/
 	outline: 2px dashed #98abb9;
 	outline-offset: -7.5px;
 	background-color: #556068;
 	-webkit-box-shadow: 3px 7px 5px #000, -3px 7px 5px #000, 3px -7px 5px #000, -3px -7px 5px #000;
 	-moz-box-shadow: 3px 7px 5px #000, -3px 7px 5px #000, 3px -7px 5px #000, -3px -7px 5px #000;
 	box-shadow: 3px 7px 5px #000, -3px 7px 5px #000, 3px -7px 5px #000, -3px -7px 5px #000;
+	margin: auto;
 }
 
+/*
+================================================
+    Set width/height that's contained within
+              the main container. 
+================================================
+*/
 .startScreenContentBox{
 	width: 1465px;
 	height: 715px;
@@ -48,6 +103,12 @@ body{
 	top: 17px;
 }
 
+/*
+================================================
+      Texted will be enlarged, bold, white
+           and have a shadow embedded.
+================================================
+*/
 #headerText, .startButtonHeader, .resetButtonHeader{
 	font-size: 3em;
 	font-family: Helvetica, sans-serif;
@@ -62,6 +123,7 @@ body{
 	top: 10px;
 }
 
+
 .startButtonHeader, .resetButtonHeader{
 	position: relative;
 	top: 175px;
@@ -71,21 +133,35 @@ body{
 	position: relative;
 	top: 225px;
 }
+
+/*
+================================================
+        Centers the start/reset button.
+================================================
+*/
 .startButton, .resetButton{
 	width: 587.5px;
 	height: 75px;
-    margin: auto;
-    display: block;
 	border: solid 2px black;
 	border-radius: 10px;
+    margin: auto;
+    display: block;
 	position: relative;
 	top: 275px;
 }
 
+/*
+================================================
+		   Content below is enlarged,
+             centered and shadowed.
+================================================
+*/
 .timer, .question, .choiceOne, .choiceTwo, .choiceThree, .choiceFour, .startText, .startButton, .resetText, .resetButton{
 	font-size: 1.5em;
 	font-family: Helvetica, sans-serif;
 	color: white;
+	-webkit-text-shadow: 2px 2px 7px black, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px white;
+	-moz-text-shadow: 2px 2px 7px black, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px white;
 	text-shadow: 2px 2px 7px black, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px white;
 	text-align: center;
 }
@@ -98,6 +174,14 @@ body{
 	margin-top: 20px;
 }
 
+/*
+================================================
+  Sets the width of the image container/image
+        and centers only the container.
+  Image is shadowed at start and brightens upon
+                    hovered.
+================================================
+*/
 .imageBoxContainer, .imageSize{
 	width: 450px;
 	height: 227px;
@@ -110,27 +194,36 @@ body{
 }
 
 .imageSize{
+	-webkit-box-shadow: 0px 4px 10px black, 4px 0px 10px black, 0px -4px 10px black, -4px 0px 10px black;
+	-moz-box-shadow: 0px 4px 10px black, 4px 0px 10px black, 0px -4px 10px black, -4px 0px 10px black;
     box-shadow: 0px 4px 10px black, 4px 0px 10px black, 0px -4px 10px black, -4px 0px 10px black;
 	transition: all 2s ease;
 }
 
 .imageSize:hover{
 	-webkit-filter: brightness(125%);
+    filter: brightness(125%);
 }
 
+/*
+================================================
+    Answer choices are position and provided
+            a certain width/height.
+================================================
+*/
 .fourAnswerChoices{
-	margin: auto;
-	margin-top: 60px;
 	width: 1200px;
 	height: 250px;
+	margin: auto;
+	margin-top: 60px;
 }
 
 .choiceOne, .choiceTwo, .choiceThree, .choiceFour{
 	width: 587.5px;
 	height: 100px;
+	font-weight: bold;
 	line-height: 4;
 	text-align: center;
-	font-weight: bold;
 }
 
 .choiceThree{
@@ -147,10 +240,23 @@ body{
 .choiceThree, .choiceFour{
 	margin-top: 25px;
 }
+
+/*
+================================================
+      Upon hovering the answer choices,
+         provide a white background.
+================================================
+*/
 .choiceOne:hover, .choiceTwo:hover, .choiceThree:hover, .choiceFour:hover, .startButton:hover, .resetButton:hover{
 	background: white;
 }
 
+/*
+================================================
+   Embeded into the answer choices to provide
+    a shadow container and transparent look.
+================================================
+*/
 .inset{
 	transition: all 1s ease;
     background-color: rgba(255, 255, 255, .2);
@@ -163,24 +269,58 @@ body{
 	margin-bottom: 25px;
 }
 
+/*
+================================================
+      Enlarge answer text, colored white,
+            centered and shadowed
+================================================
+*/
 .answerText{
 	font-size: 1.5em;
 	font-family: Helvetica, sans-serif;
 	color: white;
+	-webkit-text-shadow: 2px 2px 7px black, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px white;
+	-moz-text-shadow: 2px 2px 7px black, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px white;
 	text-shadow: 2px 2px 7px black, -2px -2px 7px black, -2px 2px 7px black, 2px -2px 7px white;
-	text-align: center;
 	margin-top: 15px;
+	text-align: center;
 }
 
+/*
+================================================
+     Upon clicking the wrong answer choice,
+   provide the correct answer in red coloring.
+================================================
+*/
 #red{
 	color: red;
 }
 
+/*
+================================================
+    Positioning, width/height and inverted
+  coloring when hovered for the media button.
+================================================
+*/
 .mediaButton{
+	width: 50px;
+	height: 50px;
+	transition: all 1s ease;
 	position: absolute;
 	bottom: 0px;
 	right: 0px;
-	width: 50px;
-	height: 50px;
 }
 
+.mediaButton:hover{
+	-webkit-filter:invert(100%);	
+}
+
+/*
+================================================
+================================================
+
+        End of the Game of Thrones CSS.
+
+================================================
+================================================
+*/

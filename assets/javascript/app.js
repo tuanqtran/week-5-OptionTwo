@@ -1,10 +1,26 @@
+///////////////////////////////////////////////////////////////////////////////// 
+/////////////////////////////////////////////////////////////////////////////////
+//// 																		 ////
+////  	        Start of the Javascript Game of Thrones Trivia game.         ////
+////																		 ////
+///////////////////////////////////////////////////////////////////////////////// 
+/////////////////////////////////////////////////////////////////////////////////
+
+// Variable declarations for correct/incorrect/no guesses, variable timer set to
+// 30 seconds along with a gameCounter to reset the game upon reaching a certain
+// threshold value.
 var correctGuesses = 0;
 var incorrectGuesses = 0;
 var noGuesses = 0;
 var gameTimer = 30;
 var gameCounter = 0;
+
+// Contains the song that plays at the start of the game
 var introSong = new Audio("assets/sounds/gameOfThronesIntro.mp4");
+
+// Variable declaration for game of throne images array.
 var gameOfThroneImages = [];
+
 gameOfThroneImages[0] = "<img class='imageSize' src='assets/images/1-arya-stark.jpg' alt=''>";
 gameOfThroneImages[1] = "<img class='imageSize' src='assets/images/2-orell.jpg' alt=''>";
 gameOfThroneImages[2] = "<img class='imageSize' src='assets/images/3-nymeria.jpg' alt=''>";
@@ -21,6 +37,8 @@ gameOfThroneImages[12] = "<img class='imageSize' src='assets/images/13-jorah-mor
 gameOfThroneImages[13] = "<img class='imageSize' src='assets/images/14-rodrik-cassel.jpg' alt=''>";
 gameOfThroneImages[14] = "<img class='imageSize' src='assets/images/15-sansa-stark.jpg' alt=''>";
 
+// Variable declaration for the answer choices array which contains an object
+// for images, correct answers, and four answer choices.
 var answerChoices = [];
 answerChoices[0] = {
 
@@ -382,13 +400,15 @@ answerChoices[14] = {
 	}
 };
 
-
+// Ensures that the html page loads before starting JS.
 $(document).ready(function(){
 
+	// Calls the intro song upon start of the webpage along with a eternal loop.
 	introSong.play();
-
 	introSong.loop = true;
 
+	// Provides a pause/play function upon clicking the pause/play button.
+	// Also resets the player timer to 0 upon restarting.
 	$(".musicContainer").click(function(){
 		if (introSong.paused === false){
 			introSong.pause();
@@ -401,21 +421,28 @@ $(document).ready(function(){
 		}
 	});
 
+	// Upon clicking the start button:
 	$("button.startButton").click(function(){
+		// Remove the start button, empty the start button header and start text.
 		$(".startButton").detach();
+		// Remove the class with invisible to reveal answer choices and embed html question text.
 		$(".startButtonHeader, .startText").html("");
 		$(".invisible").removeClass("invisible");
 		$("#headerText").html('Can you guess these Game of Thrones character names on sight?');
 		
+    	// Upon calling the timer, timer will decrement by 1 second until the gameTimer reaches 0.
 		function timer(){
 			counter = setInterval(decrement, 1000);
 		}
 		
 		function decrement(){
 			gameTimer--;
-	
+			
 			$(".timer").html("Time Remaining " + gameTimer + " Seconds");
 
+	    	// Once the timer hits 0. Increment i to display new question/images, game counter to
+	    	// reach threshold to end the game and noGuesses for not providing an answer.
+	    	// Calls the stopForWrongAnswerChoice function.
             if (gameTimer === 0){
 				i++
 				gameCounter++
@@ -425,30 +452,41 @@ $(document).ready(function(){
             }			
 		}
 
+		// Upon call, stops the timer.
 		function stop(){
 			clearInterval(counter);
 		}
 
+		// Upon call, calls the stop function to stop the timer
+		// Removes the class inset and add class invisibile to remove the answer choice display
+		// Then append the text correct answer and calls the next function stopForResultsTimerStep
+		// after 3 seconds has passed.
 		function stopForCorrectAnswerResults(){
-			clearInterval(counter);
+			stop();
 			$(".answerChoices").removeClass("inset");
 			$(".answerChoices").addClass("invisible");
 			$(".imageBoxContainer").append("<p class='answerText'>That was the correct Answer!</p>");
 			setTimeout(stopForResultsTimerStep, 1000 * 3);
 		}
 
+		// Has the same result as stopForCorrectAnswerResults function above. Except we provide the
+		// correct answer upon the user choosing the wrong answer choice or no answer at all.
 		function stopForWrongAnswerChoiceResults(){
-			clearInterval(counter);
+			stop();
 			$(".answerChoices").removeClass("inset");
 			$(".answerChoices").addClass("invisible");
 			$(".imageBoxContainer").append("<p class='answerText'>The correct answer was " + "<span id='red'>" + answerChoices[i - 1].thisIsTheCorrectAnswer + "</span>" + ". Better luck next time.</p>");
 			setTimeout(stopForResultsTimerStep, 1000 * 3);
 		}
 
+		// Upon call, readd the class inset to answer choices and remove clsas invisible from all classes
+		// that contains the invisible class. Then detach the answerText and call the functions below
+		// To begin the next question/answer choice. Unless the gameCounter is equal to answerChoice.length.
+		// If so, paste game results along with restart button.
 		function stopForResultsTimerStep(){
 			$(".answerChoices").addClass("inset");
 			$(".invisible").removeClass("invisible");
-			$(".answerText").detach("");
+			$(".answerText").detach();
 
 			emptyCurrentQuestions();
 			gameReset();
@@ -457,14 +495,19 @@ $(document).ready(function(){
 			timer();
 		}
 
+		// Upon call, reset the game timer to 30 seconds and display.
 		function resetTimer(){
 			gameTimer = 30;
 			$(".timer").html("Time Remaining " + gameTimer + " Seconds");
 		}
 
+		// Starts the timer function upon start of the page.
 		timer();
 
+		// Declaration of i variable equal to 0. 
 		var i = 0;
+
+		// Upon call, Appends the next image/answer choices to pick from.
 		function newQuestionContainer(){	
 			$(".imageBoxContainer").append(answerChoices[i].img);
 
@@ -481,8 +524,10 @@ $(document).ready(function(){
 				.attr("isItCorrect", answerChoices[i].choiceFour.isItCorrect);
 		}
 
+		// At the start of the page. Append the first question choices.
 		newQuestionContainer();
 
+		// Upon call, empties out the current image/answer choices.
 		function emptyCurrentQuestions(){
 			$(".imageBoxContainer").empty()
 			$(".choiceOne").empty()
@@ -491,6 +536,8 @@ $(document).ready(function(){
 			$(".choiceFour").empty()
 		}
 
+		// Upon call, if the incremented gameCounter == answerChoice length array.
+		// Reset the game entirely and set all variable and timers back to their original values.
 		function gameReset() {
 			if (gameCounter == answerChoices.length){
 
@@ -522,21 +569,30 @@ $(document).ready(function(){
 			}
 		}
 		
+		// When either of the four answer choices are clicked, call the gameReset function
+		// first to see if the incremented gameCounter == answerChoice length array. If it
+		// equals, reset the game. If not, continue forward.
 		$(".answerChoices").click(function(){
-			// console.log(this);
+
 			gameReset();
 
+			// Checks if the current answerChoice is not = undefined. Else do nothing.
 			if (answerChoices[i] !== undefined){
-	
+				// If this clicked answer choice attr "isItCorrect" = the string "true".
+				// Increment i to move on to the next question upon call, gameGameCounter
+				// to ensure the game ends upon reaching a certain threshold, correctGuesses
+				// to be displayed in the end results. Afterwards call the stopForCorrectAnswerResults
+				// function.
 				if($(this).attr("isItCorrect") == "true"){
-					// console.log($(this).attr("isItCorrect"));
 					i++
 					gameCounter++
 					correctGuesses++
 					stopForCorrectAnswerResults();
-
+				
+				// If this clicked answer choice attr "isItCorrect" != the string "true".
+				// Provide the same results above, excluding the increment of correctGuesses.
+				// Instead increment incorrectGuesses to be later displayed at the end of the game.
 				}else {
-				    // console.log($(this).attr("isItCorrect"));
 				    i++
 				    gameCounter++
 				    incorrectGuesses++
@@ -546,3 +602,11 @@ $(document).ready(function(){
 		});
 	});		
 });
+
+///////////////////////////////////////////////////////////////////////////////// 
+/////////////////////////////////////////////////////////////////////////////////
+//// 																		 ////
+////  	        Emd of the Javascript Game of Thrones Trivia game.           ////
+////																		 ////
+///////////////////////////////////////////////////////////////////////////////// 
+/////////////////////////////////////////////////////////////////////////////////

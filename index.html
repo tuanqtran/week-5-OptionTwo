@@ -9,23 +9,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+	<!-- Title of the Theme -->
 	<div class="gameOfThroneHeader">Game Of Thrones</div>
 
 	<div class="mainContentContainer">
 		<section class="startScreenContentBox">
+	
+			<!-- Title of the game within the main box -->
 			<h1 class="startButtonHeader">Game of Thrones Trivia Game!</h1>
+			<!-- Start Title with button to start game upon clicked. -->
 			<h1 class="startText">Click the start button to begin.</h1>
 			<div class="startButtonContainer">
 				<button class="startButton inset">Start</button>
 			</div>
 
+			<!-- Question that will be given. -->
 			<h1 id="headerText"></h1>
 
+			<!-- Timer will decrement to 0 and either move to the next question or stop the game display results. -->
 			<p class="timer invisible">Time Remaining: 30 Seconds</p>
-			<p class="question"></p>
 
+			<!-- Contains the character images that will be displayed. -->
 			<div class="imageBoxContainer"></div>
 
+			<!-- Answer choices will be switched out upon correct/incorrect/timer running out. Emptied when no questions are left. -->
 			<section class="fourAnswerChoices">
 				<p class="choiceOne inset invisible answerChoices"></p>
 				<p class="choiceTwo inset invisible answerChoices"></p>
@@ -33,8 +40,9 @@
 				<p class="choiceFour inset invisible answerChoices"></p>
 			</section>
 
+			<!-- Contains the media play/pause button. -->
 			<div class="musicContainer">
-			<img class="mediaButton" src='assets/images/playButton.png' alt=''>
+				<img class="mediaButton" src='assets/images/playButton.png' alt=''>
 			</div>
 		</section>
 	</div>
