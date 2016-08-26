@@ -3,7 +3,7 @@ var incorrectGuesses = 0;
 var noGuesses = 0;
 var gameTimer = 30;
 var gameCounter = 0;
-// var introSong = new Audio("assets/sounds/gameOfThronesIntro.mp4");
+var introSong = new Audio("assets/sounds/gameOfThronesIntro.mp4");
 var gameOfThroneImages = [];
 gameOfThroneImages[0] = "<img class='imageSize' src='assets/images/1-arya-stark.jpg' alt=''>";
 gameOfThroneImages[1] = "<img class='imageSize' src='assets/images/2-orell.jpg' alt=''>";
@@ -385,9 +385,9 @@ answerChoices[14] = {
 
 $(document).ready(function(){
 
-	// introSong.play();
+	introSong.play();
 
-	// introSong.loop = true;
+	introSong.loop = true;
 
 	$("button.startButton").click(function(){
 		$(".startButton").detach();
