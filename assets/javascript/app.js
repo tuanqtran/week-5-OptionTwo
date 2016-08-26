@@ -1,31 +1,33 @@
 var correctGuesses = 0;
 var incorrectGuesses = 0;
 var noGuesses = 0;
-var gameTimer = 5;
+var gameTimer = 30;
 var gameCounter = 0;
-// var introSong = new Audio("assets/sounds/gameOfThronesIntro.mp4")
+// var introSong = new Audio("assets/sounds/gameOfThronesIntro.mp4");
 var gameOfThroneImages = [];
 gameOfThroneImages[0] = "<img class='imageSize' src='assets/images/1-arya-stark.jpg' alt=''>";
 gameOfThroneImages[1] = "<img class='imageSize' src='assets/images/2-orell.jpg' alt=''>";
 gameOfThroneImages[2] = "<img class='imageSize' src='assets/images/3-nymeria.jpg' alt=''>";
 gameOfThroneImages[3] = "<img class='imageSize' src='assets/images/4-syrio-forel.jpg' alt=''>";
-// gameOfThroneImages[4] = "<img class='imageSize' src='assets/images/5-lysa-arryn.jpg' alt=''>";
-// gameOfThroneImages[5] = "<img class='imageSize' src='assets/images/6-bronn.jpg' alt=''>";
-// gameOfThroneImages[6] = "<img class='imageSize' src='assets/images/7-catelyn-stark.jpg' alt=''>";
-// gameOfThroneImages[7] = "<img class='imageSize' src='assets/images/8-grey-wind.jpg' alt=''>";
-// gameOfThroneImages[8] = "<img class='imageSize' src='assets/images/9-kraznyx-mo-nakloz.jpg' alt=''>";
-// gameOfThroneImages[9] = "<img class='imageSize' src='assets/images/10-tyrion-lannister.jpg' alt=''>";
-// gameOfThroneImages[10] = "<img class='imageSize' src='assets/images/11-meera-reed.jpg' alt=''>";
-// gameOfThroneImages[11] = "<img class='imageSize' src='assets/images/12-viserys-targaryen.jpg' alt=''>";
-// gameOfThroneImages[12] = "<img class='imageSize' src='assets/images/13-jorah-mormont.jpg' alt=''>";
-// gameOfThroneImages[13] = "<img class='imageSize' src='assets/images/14-rodrik-cassel.jpg' alt=''>";
-// gameOfThroneImages[14] = "<img class='imageSize' src='assets/images/15-sansa-stark.jpg' alt=''>";
+gameOfThroneImages[4] = "<img class='imageSize' src='assets/images/5-lysa-arryn.jpg' alt=''>";
+gameOfThroneImages[5] = "<img class='imageSize' src='assets/images/6-bronn.jpg' alt=''>";
+gameOfThroneImages[6] = "<img class='imageSize' src='assets/images/7-catelyn-stark.jpg' alt=''>";
+gameOfThroneImages[7] = "<img class='imageSize' src='assets/images/8-grey-wind.jpg' alt=''>";
+gameOfThroneImages[8] = "<img class='imageSize' src='assets/images/9-kraznyx-mo-nakloz.jpg' alt=''>";
+gameOfThroneImages[9] = "<img class='imageSize' src='assets/images/10-tyrion-lannister.jpg' alt=''>";
+gameOfThroneImages[10] = "<img class='imageSize' src='assets/images/11-meera-reed.jpg' alt=''>";
+gameOfThroneImages[11] = "<img class='imageSize' src='assets/images/12-viserys-targaryen.jpg' alt=''>";
+gameOfThroneImages[12] = "<img class='imageSize' src='assets/images/13-jorah-mormont.jpg' alt=''>";
+gameOfThroneImages[13] = "<img class='imageSize' src='assets/images/14-rodrik-cassel.jpg' alt=''>";
+gameOfThroneImages[14] = "<img class='imageSize' src='assets/images/15-sansa-stark.jpg' alt=''>";
 
 var answerChoices = [];
 answerChoices[0] = {
 
 	img: gameOfThroneImages[0],
 	
+	thisIsTheCorrectAnswer: "Ayra Stark",
+
 	choiceOne: {
 		name:"Ayra Stark",
 		isItCorrect: true,
@@ -47,7 +49,9 @@ answerChoices[0] = {
 answerChoices[1] = {
 
 	img: gameOfThroneImages[1],
-	
+
+	thisIsTheCorrectAnswer: "Orell",
+
 	choiceOne: {
 		name:"Stye, Magnar of Thenn",
 		isItCorrect: false,
@@ -70,6 +74,8 @@ answerChoices[2] = {
 
 	img: gameOfThroneImages[2],
 	
+	thisIsTheCorrectAnswer: "Nymeria",
+
 	choiceOne: {
 		name:"Nymeria",
 		isItCorrect: true,
@@ -92,6 +98,8 @@ answerChoices[3] = {
 
 	img: gameOfThroneImages[3],
 	
+	thisIsTheCorrectAnswer: "Syrio Forel",
+
 	choiceOne: {
 		name:"Ser Dontos",
 		isItCorrect: false,
@@ -110,247 +118,269 @@ answerChoices[3] = {
 	}
 };
 
-// answerChoices[4] = {
+answerChoices[4] = {
 
-// 	img: gameOfThroneImages[4],
+	img: gameOfThroneImages[4],
 	
-// 	choiceOne: {
-// 		name:"Lysa Arryn",
-// 		isItCorrect: true,
-// 	},
-// 	choiceTwo: {
-// 		name:"Catelyn Stark",
-// 		isItCorrect: false,
-// 	},
-// 	choiceThree: {
-// 		name:"Roslin Slynt",
-// 		isItCorrect: false,
-// 	},
-// 	choiceFour: {
-// 		name:"Selyse Baratheon",
-// 		isItCorrect: false,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Lysa Arryn",
 
-// answerChoices[5] = {
+	choiceOne: {
+		name:"Lysa Arryn",
+		isItCorrect: true,
+	},
+	choiceTwo: {
+		name:"Catelyn Stark",
+		isItCorrect: false,
+	},
+	choiceThree: {
+		name:"Roslin Slynt",
+		isItCorrect: false,
+	},
+	choiceFour: {
+		name:"Selyse Baratheon",
+		isItCorrect: false,
+	}
+};
 
-// 	img: gameOfThroneImages[5],
+answerChoices[5] = {
+
+	img: gameOfThroneImages[5],
 	
-// 	choiceOne: {
-// 		name:"Bronn",
-// 		isItCorrect: true,
-// 	},
-// 	choiceTwo: {
-// 		name:"Ser Dontos",
-// 		isItCorrect: false,
-// 	},
-// 	choiceThree: {
-// 		name:"Syrio Forel",
-// 		isItCorrect: false,
-// 	},
-// 	choiceFour: {
-// 		name:"Yoren",
-// 		isItCorrect: false,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Bronn",
 
-// answerChoices[6] = {
+	choiceOne: {
+		name:"Bronn",
+		isItCorrect: true,
+	},
+	choiceTwo: {
+		name:"Ser Dontos",
+		isItCorrect: false,
+	},
+	choiceThree: {
+		name:"Syrio Forel",
+		isItCorrect: false,
+	},
+	choiceFour: {
+		name:"Yoren",
+		isItCorrect: false,
+	}
+};
 
-// 	img: gameOfThroneImages[6],
+answerChoices[6] = {
+
+	img: gameOfThroneImages[6],
 	
-// 	choiceOne: {
-// 		name:"Lysa Arryn",
-// 		isItCorrect: false,
-// 	},
-// 	choiceTwo: {
-// 		name:"Catelyn Stark",
-// 		isItCorrect: true,
-// 	},
-// 	choiceThree: {
-// 		name:"Selyse Baratheon",
-// 		isItCorrect: false,
-// 	},
-// 	choiceFour: {
-// 		name:"Olenna Tyrell",
-// 		isItCorrect: false,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Catelyn Stark",
 
-// answerChoices[7] = {
+	choiceOne: {
+		name:"Lysa Arryn",
+		isItCorrect: false,
+	},
+	choiceTwo: {
+		name:"Catelyn Stark",
+		isItCorrect: true,
+	},
+	choiceThree: {
+		name:"Selyse Baratheon",
+		isItCorrect: false,
+	},
+	choiceFour: {
+		name:"Olenna Tyrell",
+		isItCorrect: false,
+	}
+};
 
-// 	img: gameOfThroneImages[7],
+answerChoices[7] = {
+
+	img: gameOfThroneImages[7],
 	
-// 	choiceOne: {
-// 		name:"Pyp",
-// 		isItCorrect: false,
-// 	},
-// 	choiceTwo: {
-// 		name:"Grey Wind",
-// 		isItCorrect: true,
-// 	},
-// 	choiceThree: {
-// 		name:"Shaggydog",
-// 		isItCorrect: false,
-// 	},
-// 	choiceFour: {
-// 		name:"Bowser",
-// 		isItCorrect: false,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Grey Wind",
 
-// answerChoices[8] = {
+	choiceOne: {
+		name:"Pyp",
+		isItCorrect: false,
+	},
+	choiceTwo: {
+		name:"Grey Wind",
+		isItCorrect: true,
+	},
+	choiceThree: {
+		name:"Shaggydog",
+		isItCorrect: false,
+	},
+	choiceFour: {
+		name:"Bowser",
+		isItCorrect: false,
+	}
+};
 
-// 	img: gameOfThroneImages[8],
+answerChoices[8] = {
+
+	img: gameOfThroneImages[8],
 	
-// 	choiceOne: {
-// 		name:"Pyat Pree",
-// 		isItCorrect: false,
-// 	},
-// 	choiceTwo: {
-// 		name:"Missander Navaxos",
-// 		isItCorrect: false,
-// 	},
-// 	choiceThree: {
-// 		name:"Jorah Mormont",
-// 		isItCorrect: false,
-// 	},
-// 	choiceFour: {
-// 		name:"Kraznys Mo Nakloz",
-// 		isItCorrect: true,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Kraznys Mo Nakloz",
 
-// answerChoices[9] = {
+	choiceOne: {
+		name:"Pyat Pree",
+		isItCorrect: false,
+	},
+	choiceTwo: {
+		name:"Missander Navaxos",
+		isItCorrect: false,
+	},
+	choiceThree: {
+		name:"Jorah Mormont",
+		isItCorrect: false,
+	},
+	choiceFour: {
+		name:"Kraznys Mo Nakloz",
+		isItCorrect: true,
+	}
+};
 
-// 	img: gameOfThroneImages[9],
+answerChoices[9] = {
+
+	img: gameOfThroneImages[9],
 	
-// 	choiceOne: {
-// 		name:"Waldor Stark",
-// 		isItCorrect: false,
-// 	},
-// 	choiceTwo: {
-// 		name:"Tywin Frey",
-// 		isItCorrect: false,
-// 	},
-// 	choiceThree: {
-// 		name:"Tyrion Lannister",
-// 		isItCorrect: true,
-// 	},
-// 	choiceFour: {
-// 		name:"Jorah Clegane",
-// 		isItCorrect: false,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Tyrion Lannister",
 
-// answerChoices[10] = {
+	choiceOne: {
+		name:"Waldor Stark",
+		isItCorrect: false,
+	},
+	choiceTwo: {
+		name:"Tywin Frey",
+		isItCorrect: false,
+	},
+	choiceThree: {
+		name:"Tyrion Lannister",
+		isItCorrect: true,
+	},
+	choiceFour: {
+		name:"Jorah Clegane",
+		isItCorrect: false,
+	}
+};
 
-// 	img: gameOfThroneImages[10],
+answerChoices[10] = {
+
+	img: gameOfThroneImages[10],
 	
-// 	choiceOne: {
-// 		name:"Doreah",
-// 		isItCorrect: false,
-// 	},
-// 	choiceTwo: {
-// 		name:"Meera Reed",
-// 		isItCorrect: true,
-// 	},
-// 	choiceThree: {
-// 		name:"Roslin Frey",
-// 		isItCorrect: false,
-// 	},
-// 	choiceFour: {
-// 		name:"Ros",
-// 		isItCorrect: false,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Meera Reed",
 
-// answerChoices[11] = {
+	choiceOne: {
+		name:"Doreah",
+		isItCorrect: false,
+	},
+	choiceTwo: {
+		name:"Meera Reed",
+		isItCorrect: true,
+	},
+	choiceThree: {
+		name:"Roslin Frey",
+		isItCorrect: false,
+	},
+	choiceFour: {
+		name:"Ros",
+		isItCorrect: false,
+	}
+};
 
-// 	img: gameOfThroneImages[11],
+answerChoices[11] = {
+
+	img: gameOfThroneImages[11],
 	
-// 	choiceOne: {
-// 		name:"Jon Snow",
-// 		isItCorrect: false,
-// 	},
-// 	choiceTwo: {
-// 		name:"Varys Targaryen",
-// 		isItCorrect: false,
-// 	},
-// 	choiceThree: {
-// 		name:"Viserys Targaryen",
-// 		isItCorrect: true,
-// 	},
-// 	choiceFour: {
-// 		name:"Illyrio Mopatis",
-// 		isItCorrect: false,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Viserys Targaryen",
 
-// answerChoices[12] = {
+	choiceOne: {
+		name:"Jon Snow",
+		isItCorrect: false,
+	},
+	choiceTwo: {
+		name:"Varys Targaryen",
+		isItCorrect: false,
+	},
+	choiceThree: {
+		name:"Viserys Targaryen",
+		isItCorrect: true,
+	},
+	choiceFour: {
+		name:"Illyrio Mopatis",
+		isItCorrect: false,
+	}
+};
 
-// 	img: gameOfThroneImages[12],
+answerChoices[12] = {
+
+	img: gameOfThroneImages[12],
 	
-// 	choiceOne: {
-// 		name:"Bronn",
-// 		isItCorrect: false,
-// 	},
-// 	choiceTwo: {
-// 		name:"Jorah Mormont",
-// 		isItCorrect: true,
-// 	},
-// 	choiceThree: {
-// 		name:"Barristan Selmy",
-// 		isItCorrect: false,
-// 	},
-// 	choiceFour: {
-// 		name:"Baario Naharis",
-// 		isItCorrect: false,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Jorah Mormont",
 
-// answerChoices[13] = {
+	choiceOne: {
+		name:"Bronn",
+		isItCorrect: false,
+	},
+	choiceTwo: {
+		name:"Jorah Mormont",
+		isItCorrect: true,
+	},
+	choiceThree: {
+		name:"Barristan Selmy",
+		isItCorrect: false,
+	},
+	choiceFour: {
+		name:"Baario Naharis",
+		isItCorrect: false,
+	}
+};
 
-// 	img: gameOfThroneImages[13],
+answerChoices[13] = {
+
+	img: gameOfThroneImages[13],
 	
-// 	choiceOne: {
-// 		name:"Alliser Thorne",
-// 		isItCorrect: false,
-// 	},
-// 	choiceTwo: {
-// 		name:"Ramsay Snow",
-// 		isItCorrect: false,
-// 	},
-// 	choiceThree: {
-// 		name:"Edmure Tully",
-// 		isItCorrect: false,
-// 	},
-// 	choiceFour: {
-// 		name:"Rodrik Cassel",
-// 		isItCorrect: true,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Rodrik Cassel",
 
-// answerChoices[14] = {
+	choiceOne: {
+		name:"Alliser Thorne",
+		isItCorrect: false,
+	},
+	choiceTwo: {
+		name:"Ramsay Snow",
+		isItCorrect: false,
+	},
+	choiceThree: {
+		name:"Edmure Tully",
+		isItCorrect: false,
+	},
+	choiceFour: {
+		name:"Rodrik Cassel",
+		isItCorrect: true,
+	}
+};
 
-// 	img: gameOfThroneImages[14],
+answerChoices[14] = {
+
+	img: gameOfThroneImages[14],
 	
-// 	choiceOne: {
-// 		name:"Ayra Stark",
-// 		isItCorrect: false,
-// 	},
-// 	choiceTwo: {
-// 		name:"Robin Arryn",
-// 		isItCorrect: false,
-// 	},
-// 	choiceThree: {
-// 		name:"Margaery Tyrell",
-// 		isItCorrect: false,
-// 	},
-// 	choiceFour: {
-// 		name:"Sansa Stark",
-// 		isItCorrect: true,
-// 	}
-// };
+	thisIsTheCorrectAnswer: "Sansa Stark",
+
+	choiceOne: {
+		name:"Ayra Stark",
+		isItCorrect: false,
+	},
+	choiceTwo: {
+		name:"Robin Arryn",
+		isItCorrect: false,
+	},
+	choiceThree: {
+		name:"Margaery Tyrell",
+		isItCorrect: false,
+	},
+	choiceFour: {
+		name:"Sansa Stark",
+		isItCorrect: true,
+	}
+};
 
 
 $(document).ready(function(){
@@ -378,10 +408,8 @@ $(document).ready(function(){
 				i++
 				gameCounter++
 				noGuesses++
-				emptyCurrentQuestions();
-				gameReset();
-				newQuestionContainer();
-				resetTimer();
+				stopForWrongAnswerChoiceResults()
+
             }			
 		}
 
@@ -389,8 +417,36 @@ $(document).ready(function(){
 			clearInterval(counter);
 		}
 
+		function stopForCorrectAnswerResults(){
+			clearInterval(counter);
+			$(".answerChoices").removeClass("inset");
+			$(".answerChoices").addClass("invisible");
+			$(".imageBoxContainer").append("<p class='answerText'>That was the correct Answer!</p>");
+			setTimeout(stopForResultsTimerStep, 1000 * 3);
+		}
+
+		function stopForWrongAnswerChoiceResults(){
+			clearInterval(counter);
+			$(".answerChoices").removeClass("inset");
+			$(".answerChoices").addClass("invisible");
+			$(".imageBoxContainer").append("<p class='answerText'>The correct answer was " + "<span id='red'>" + answerChoices[i - 1].thisIsTheCorrectAnswer + "</span>" + ". Better luck next time.</p>");
+			setTimeout(stopForResultsTimerStep, 1000 * 3);
+		}
+
+		function stopForResultsTimerStep(){
+			$(".answerChoices").addClass("inset");
+			$(".invisible").removeClass("invisible");
+			$(".answerText").detach("");
+
+			emptyCurrentQuestions();
+			gameReset();
+			newQuestionContainer();
+			resetTimer();
+			timer();
+		}
+
 		function resetTimer(){
-			gameTimer = 5;
+			gameTimer = 30;
 			$(".timer").html("Time Remaining " + gameTimer + " Seconds");
 		}
 
@@ -425,6 +481,7 @@ $(document).ready(function(){
 
 		function gameReset() {
 			if (gameCounter == answerChoices.length){
+
 				$(".answerChoices").addClass("invisible");
 				stop();
 				$(".startButtonHeader").html("Game of Thrones Trivia Game!");
@@ -444,41 +501,34 @@ $(document).ready(function(){
 					incorrectGuesses = 0;
 					noGuesses = 0;
 					gameCounter = 0;
-
 					i = 0;
 				    emptyCurrentQuestions();
 				    newQuestionContainer();
 					resetTimer();
 					timer();
-
-				});
-			
+				});		
 			}
 		}
 		
 		$(".answerChoices").click(function(){
-
+			// console.log(this);
 			gameReset();
 
 			if (answerChoices[i] !== undefined){
+	
 				if($(this).attr("isItCorrect") == "true"){
 					// console.log($(this).attr("isItCorrect"));
 					i++
 					gameCounter++
 					correctGuesses++
-					emptyCurrentQuestions();
-					gameReset();
-					newQuestionContainer();
-					resetTimer();
+					stopForCorrectAnswerResults();
+
 				}else {
 				    // console.log($(this).attr("isItCorrect"));
 				    i++
 				    gameCounter++
 				    incorrectGuesses++
-				    emptyCurrentQuestions();
-					gameReset();
-				    newQuestionContainer();
-					resetTimer();
+				    stopForWrongAnswerChoiceResults();
 				}
 			}
 		});
