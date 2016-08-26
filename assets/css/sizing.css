@@ -32,6 +32,11 @@
 		line-height: 4.5;
 	}
 
+	.mediaButton{
+		width: 40px;
+		height: 40px;
+	}
+
 }
 
 @media screen and (max-width:768px){
@@ -92,6 +97,11 @@
 		margin-top: 10px;
 	}
 
+	.mediaButton{
+		width: 35px;
+		height: 35px;
+	}
+
 }
 
 @media screen and (max-width: 640px){
@@ -111,6 +121,11 @@
 	.choiceOne, .choiceTwo, .choiceThree, .choiceFour{
 		width: 450px;
 		height: 65px;
+	}
+
+	.mediaButton{
+		width: 30px;
+		height: 30px;
 	}
 
 }

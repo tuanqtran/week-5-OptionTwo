@@ -389,6 +389,18 @@ $(document).ready(function(){
 
 	introSong.loop = true;
 
+	$(".musicContainer").click(function(){
+		if (introSong.paused === false){
+			introSong.pause();
+			introSong.currentTime = 0;
+			$(".musicContainer").html("<img class='mediaButton' src='assets/images/pauseButton.png' alt=''>")
+		}else{
+			introSong.play();
+			introSong.loop = true;	
+			$(".musicContainer").html("<img class='mediaButton' src='assets/images/playButton.png' alt=''>")		
+		}
+	});
+
 	$("button.startButton").click(function(){
 		$(".startButton").detach();
 		$(".startButtonHeader, .startText").html("");
