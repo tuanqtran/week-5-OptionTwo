@@ -23,6 +23,7 @@ body{
 .invisible{
 	visibility: hidden;
 }
+
 .mainContentContainer{
 	width: 1500px;
 	height: 750px;
@@ -103,18 +104,18 @@ body{
 	margin-top: 15px;
 }
 
+.imageBoxContainer{
+    display: block;
+    margin: auto;
+}
+
 .imageSize{
     box-shadow: 0px 4px 10px black, 4px 0px 10px black, 0px -4px 10px black, -4px 0px 10px black;
 	transition: all 2s ease;
-
 }
 
 .imageSize:hover{
 	-webkit-filter: brightness(125%);
-}
-.imageBoxContainer{
-    display: block;
-    margin: auto;
 }
 
 .fourAnswerChoices{
@@ -126,12 +127,10 @@ body{
 
 .choiceOne, .choiceTwo, .choiceThree, .choiceFour{
 	width: 587.5px;
-	/*width: 150px;*/
 	height: 100px;
 	line-height: 4;
 	text-align: center;
 	font-weight: bold;
-	/*background-color: white;	*/
 }
 
 .choiceThree{
@@ -143,7 +142,6 @@ body{
 
 .choiceTwo, .choiceFour{
 	float: right;
-	/*clear: right;*/
 }
 
 .choiceThree, .choiceFour{
